@@ -1,0 +1,80 @@
+html,
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.game {
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(78, 78, 78);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-container {
+    --size: 90vh;
+    width: var(--size);
+    height: var(--size);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.tile {
+    --size: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    width: var(--size);
+    height: var(--size);
+    background-color: rgb(153, 153, 153);
+    border: 1px solid rgb(75, 75, 75);
+}
+
+.game-end-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 10;
+    background-color: white;
+    padding: 4rem;
+    border-radius: 4px;
+    opacity: 0;
+    text-align: center;
+
+    transition: opacity 250ms ease, transform 250ms ease;
+}
+
+.win-message {
+    font-size: 3rem;
+    color: black;
+    margin-bottom: 1.5rem;
+    display: none;
+}
+
+.replay-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: none;
+    margin: 0 auto;
+}
+
+.replay-svg {
+    --size: 3rem;
+    height: var(--size);
+    width: var(--size);
+    margin: 0 auto;
+}
