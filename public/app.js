@@ -1,20 +1,42 @@
 let board = new Board();
-let currentMarker = MARKER.x;
-let otherMarker = MARKER.o;
 const endGameElement = document.getElementById('game-end-container');
 const winMessageElement = document.getElementById('win-message');
 const replayButton = document.getElementById('replay-button');
 
+let playerMarker;
+let botMarker;
+let currentMarker = MARKER.x;
+let otherMarker = MARKER.o;
+
+function chooseRandomMarker() {
+    const randomChoice = Math.floor(Math.random() * 2);
+    if (randomChoice == 0) {
+        playerMarker = MARKER.x;
+        botMarker = MARKER.o;
+    } else {
+        playerMarker = MARKER.o;
+        botMarker = MARKER.x;
+    }
+}
+
+chooseRandomMarker();
+
+if (currentMarker == botMarker) {
+    makeBotMove();
+    board.displayBoard();
+    [currentMarker, otherMarker] = [otherMarker, currentMarker];
+}
+
 function selectTile(location) {
     if (board.isLocationFull(location) == false) {
         // Only if it's the players turn
-        if (currentMarker == MARKER.x) {
-            board.placeMarker(location, MARKER.x);
+        if (currentMarker == playerMarker) {
+            board.placeMarker(location, playerMarker);
             board.displayBoard();
 
             if (board.winCheck()) {
-                displayWinMessage(currentMarker);
-                currentMarker = null;
+                displayWinMessage(playerMarker);
+                playerMarker = null;
                 return;
             } else if (board.fullBoardCheck()) {
                 displayTieMessage();
@@ -24,25 +46,16 @@ function selectTile(location) {
 
             [currentMarker, otherMarker] = [otherMarker, currentMarker];
 
-            if (currentMarker != null) {
-                // Make the bot move
-                // const botMove = minimax(
-                //     board.findAllMoves().length,
-                //     false,
-                //     board,
-                //     -Infinity,
-                //     Infinity
-                // )[1];
-
-                const botMove = bestMove(board);
-                console.log(botMove);
-
-                board.placeMarker(botMove, MARKER.o);
-
+            if (currentMarker == botMarker) {
+                makeBotMove();
                 board.displayBoard();
 
                 if (board.winCheck()) {
-                    displayWinMessage(currentMarker);
+                    displayWinMessage(botMarker);
+                    currentMarker = null;
+                    return;
+                } else if (board.fullBoardCheck()) {
+                    displayTieMessage();
                     currentMarker = null;
                     return;
                 }
@@ -78,4 +91,17 @@ function replay() {
     endGameElement.style.transform = 'translate(-50%, -50%) scale(0)';
     winMessageElement.style.display = 'none';
     replayButton.style.display = 'none';
+
+    chooseRandomMarker();
+
+    if (currentMarker == botMarker) {
+        makeBotMove();
+        board.displayBoard();
+        [currentMarker, otherMarker] = [otherMarker, currentMarker];
+    }
+}
+
+function makeBotMove() {
+    const botMove = bestMove(board, botMarker);
+    board.placeMarker(botMove, botMarker);
 }
