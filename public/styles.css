@@ -15,7 +15,7 @@ body {
 .game {
     width: 100%;
     height: 100vh;
-    background-color: rgb(78, 78, 78);
+    background-color: #14bdac;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,6 +31,7 @@ body {
 }
 
 .tile {
+    --border-width: 3px;
     --size: 100%;
     display: inline-flex;
     align-items: center;
@@ -38,8 +39,23 @@ body {
     font-size: 3rem;
     width: var(--size);
     height: var(--size);
-    background-color: rgb(153, 153, 153);
-    border: 1px solid rgb(75, 75, 75);
+    background-color: #14bdac;
+}
+
+.tile.top {
+    border-top: var(--border-width) solid rgba(0, 0, 0, 0.34);
+}
+
+.tile.left {
+    border-left: var(--border-width) solid rgba(0, 0, 0, 0.34);
+}
+
+.tile.bottom {
+    border-bottom: var(--border-width) solid rgba(0, 0, 0, 0.34);
+}
+
+.tile.right {
+    border-right: var(--border-width) solid rgba(0, 0, 0, 0.34);
 }
 
 .game-end-container {
