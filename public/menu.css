@@ -1,0 +1,80 @@
+body,
+html {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    font-size: 16px;
+}
+
+.page-content {
+    width: 100%;
+    height: 100vh;
+    background-color: #14bdac;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title {
+    position: relative;
+    font-family: sans-serif;
+    font-size: 4rem;
+    color: white;
+}
+
+.title:hover::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+.title::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: white;
+    border: none;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0.75);
+    bottom: 0;
+    transition: transform 300ms;
+}
+
+.button-container {
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2rem 0;
+}
+
+.button-container a {
+    display: block;
+    text-align: center;
+    font-size: 2rem;
+    font-family: sans-serif;
+    text-decoration: none;
+    margin: 1rem 0;
+    transition: opacity 200ms ease;
+}
+
+.button-container a:hover {
+    opacity: 0.6;
+}
+
+.player-button {
+    background-color: #3056c9;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 7.5px;
+}
+
+.bot-button {
+    background-color: #656de0;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 7.5px;
+}

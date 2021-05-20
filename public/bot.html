@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Circle</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="game-end-container" id="game-end-container">
+            <div id="win-message" class="win-message"></div>
+            <button onclick="replay()" class="replay-button" id="replay-button">
+                <svg
+                    class="replay-svg"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        d="M18.885 3.515c-4.617-4.618-12.056-4.676-16.756-.195l-2.129-2.258v7.938h7.484l-2.066-2.191c2.82-2.706 7.297-2.676 10.073.1 4.341 4.341 1.737 12.291-5.491 12.291v4.8c3.708 0 6.614-1.244 8.885-3.515 4.686-4.686 4.686-12.284 0-16.97z"
+                    />
+                </svg>
+            </button>
+        </div>
+
+        <section class="game">
+            <div class="game-container">
+                <div
+                    onclick="selectTile(0)"
+                    id="0"
+                    class="tile bottom right"
+                ></div>
+                <div
+                    onclick="selectTile(1)"
+                    id="1"
+                    class="tile left bottom right"
+                ></div>
+                <div
+                    onclick="selectTile(2)"
+                    id="2"
+                    class="tile left bottom"
+                ></div>
+                <div
+                    onclick="selectTile(3)"
+                    id="3"
+                    class="tile top right bottom"
+                ></div>
+                <div
+                    onclick="selectTile(4)"
+                    id="4"
+                    class="tile top right bottom left"
+                ></div>
+                <div
+                    onclick="selectTile(5)"
+                    id="5"
+                    class="tile top left bottom"
+                ></div>
+                <div
+                    onclick="selectTile(6)"
+                    id="6"
+                    class="tile top right"
+                ></div>
+                <div
+                    onclick="selectTile(7)"
+                    id="7"
+                    class="tile left top right"
+                ></div>
+                <div onclick="selectTile(8)" id="8" class="tile left top"></div>
+            </div>
+        </section>
+
+        <script src="consts.js"></script>
+        <script src="Board.js"></script>
+        <script src="minimax.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>
